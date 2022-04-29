@@ -7,7 +7,7 @@ function App() {
 
   const [number, setNumber] = useState(0)
   const [students, setStudents] = useState([])
-  const [studentId, setStudentId] = useState(1);
+  const [id, setId] = useState(1);
 
   const addToNumber = ()=>{
     setNumber(number + 1)
@@ -18,16 +18,16 @@ function App() {
   }
 
   //function to add a new student
-  const addNewStudent = (student) => {
+  const addNewStudent = (name, lastName) => {
+    const student = {id, name, lastName};
     setStudents([...students, student]);
-    setStudentId(studentId + 1);
+    setId(id + 1);
   }
 
   //function to delete a student
   const deleteStudent = (id) => {
     const studentsFiltered = students.filter(student => student.id !== id);
     setStudents(studentsFiltered);
-    setStudentId(studentId - 1);
   }
   
 
@@ -37,7 +37,7 @@ function App() {
       <h1>{number}</h1>
       <button onClick={addToNumber}>+</button>
       <button onClick={substractToNumber}>-</button>
-      <StudentsForm addStudent={addNewStudent} id={studentId}/>
+      <StudentsForm addStudent={addNewStudent}/>
       <ListOfStudents students={students} onDelete={deleteStudent}/>
     </div>
   )

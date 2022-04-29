@@ -1,16 +1,11 @@
 import { useState } from 'react'
 
-const StudentsForm = ({id, addStudent}) => {
+const StudentsForm = ({addStudent}) => {
 
   const onAddStudent = (event) => {
     event.preventDefault();
     if(name && lastName){
-      const student = {
-        id,
-        name,
-        lastName
-      }
-      addStudent({id, name, lastName});
+      addStudent(name, lastName);
     } 
   }
 
